@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
     body {
       background-image: url('img/bg.jpg');
@@ -36,16 +37,30 @@
         <div>
           <form>
             <label for="username" class="form-label">Username:</label>
-            <input type="text" class="form-control mb-3" id="username" placeholder="Enter username...">
-
+            <div class="mb-4 input-group">
+              <span class="input-group-text">
+                <i class="bi bi-person-fill"></i>
+              </span>
+              <input type="text" class="form-control" id="username" placeholder="Enter username...">
+            </div>
+            
             <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control mb-4" id="password" placeholder="Enter password...">
+            <div class="mb-4 input-group">
+              <span class="input-group-text">
+                <i class="bi bi-lock"></i>
+              </span>
+              <input type="password" class="form-control" id="password" placeholder="Enter password...">
+            </div>
+            
 
             <div class="mb-3 text-center ">
               <button type="submit" class="btn btn-block btn-outline-dark">LOGIN</button>
             </div>
           </form>
-        </div>
+          <div class="text-center">
+            <small>Don't have an account yet?</small>
+            <a class="small" href="">Register</a>
+          </div>
 
       </div>
     </div>
