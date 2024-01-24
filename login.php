@@ -1,5 +1,4 @@
 
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,27 +20,23 @@
       width: 400px;
       margin: 0 auto; 
     }
-    input{
-      backdrop-filter: blur(5px);
-      color: rgba(255, 255, 255, 0.5);
-    }
   </style>
 </head>
 <body>
 <div class="container-fluid d-flex align-items-center justify-content-center vh-100">
   <div class="card p-3">
     <div class="card-body">
-      <h5 class="card-title text-center">LOGIN</h5>
+      <h5 class="card-title text-center mb-4">INVENTORY MANAGEMENT SYSTEM</h5>
       <div class="justify-content-start">
 
         <div>
-          <form>
+          <form class="needs-validation" novalidate>
             <label for="username" class="form-label">Username:</label>
             <div class="mb-4 input-group">
               <span class="input-group-text">
                 <i class="bi bi-person-fill"></i>
               </span>
-              <input type="text" class="form-control" id="username" placeholder="Enter username...">
+              <input type="text" class="form-control" id="username" placeholder="Enter username..." required>
             </div>
             
             <label for="password" class="form-label">Password:</label>
@@ -49,7 +44,7 @@
               <span class="input-group-text">
                 <i class="bi bi-lock"></i>
               </span>
-              <input type="password" class="form-control" id="password" placeholder="Enter password...">
+              <input type="password" class="form-control" id="password" placeholder="Enter password..." required>
             </div>
             
 
@@ -59,12 +54,14 @@
           </form>
           <div class="text-center">
             <small>Don't have an account yet?</small>
-            <a class="small" href="">Register</a>
+            <a class="small" href="register.php">Register</a>
           </div>
 
       </div>
     </div>
   </div>
 </div>
+
+<script src="valid.js"></script>
 </body>
 </html>
