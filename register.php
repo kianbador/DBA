@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
     body {
-      background-image: url('img/bg.jpg');
+      background-image: url('img/bg1.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -15,7 +15,7 @@
     }
     .card {
       backdrop-filter: blur(5px);
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.3);
       width: 500px;
       margin: 0 auto; 
     }

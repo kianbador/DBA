@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
     body {
-      background-image: url('img/bg.jpg');
+      background-image: url("img/bg1.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -16,19 +16,25 @@
     }
     .card {
       backdrop-filter: blur(5px);
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.3);
       width: 400px;
       margin: 0 auto; 
+    }
+    .img-thumbnail{
+      background-color: transparent;
+      border: none;
     }
   </style>
 </head>
 <body>
 <div class="container-fluid d-flex align-items-center justify-content-center vh-100">
-  <div class="card p-3">
+  <div class="card py-1 px-3">
     <div class="card-body">
+    <div class="text-center">
+          <img src="img/logo-removebg-preview.png" alt="logo" class="img-thumbnail" width="100" height="100">
+        </div>
       <h5 class="card-title text-center mb-4">INVENTORY MANAGEMENT SYSTEM</h5>
       <div class="justify-content-start">
-
         <div>
           <form class="needs-validation" novalidate>
             <label for="username" class="form-label">Username:</label>
