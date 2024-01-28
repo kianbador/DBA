@@ -1,3 +1,38 @@
+<?php 
+  include('conn.php');
+  $username = $password = ''; 
+  $errors = array('username'=>'','password'=>'');
+
+  if(isset($_POST['submit'])){
+    if (isset($_POST['username'])){
+      $username = $_POST['username'];
+      $username = mysqli_real_escape_string($conn, $_POST['username']);
+      $stmt = $conn->prepare("SELECT username, password FROM staff_tbl WHERE username = ?");
+      $stmt->bind_param("s", $username);
+      $stmt->execute();
+      $stmt->bind_result($resultUsername, $resultPassword);
+      $stmt->fetch();
+      if ($resultUsername) {
+          if (isset($_POST['password'])){
+            $password = $_POST['password'];
+            if ($password === $resultPassword){
+              header('Location: menu.php');
+            }
+            else{
+              $errors['password'] = 'wrong password'; 
+            }
+          }
+      }
+      else{
+          $errors['username'] = "username doesn't exist";
+      }
+    }
+
+  }
+
+
+?>
+
 
 <html lang="en">
 <head>
@@ -36,37 +71,43 @@
       <h5 class="card-title text-center mb-4">INVENTORY MANAGEMENT SYSTEM</h5>
       <div class="justify-content-start">
         <div>
-          <form class="needs-validation" novalidate>
+          <form action="login.php" method="POST" class="needs-validation" novalidate>
             <label for="username" class="form-label">Username:</label>
-            <div class="mb-4 input-group">
+            <div class="input-group">
               <span class="input-group-text">
                 <i class="bi bi-person-fill"></i>
               </span>
-              <input type="text" class="form-control" id="username" placeholder="Enter username..." required>
+              <input type="text" class="form-control" id="username" placeholder="Enter username..." name='username' value= "<?php echo $username ?>" required>
+            </div>
+            <div class="mb-4 small text-danger">
+              <small><?php  echo $errors['username'] ?></small>
             </div>
             
             <label for="password" class="form-label">Password:</label>
-            <div class="mb-4 input-group">
+            <div class="input-group">
               <span class="input-group-text">
                 <i class="bi bi-lock"></i>
               </span>
-              <input type="password" class="form-control" id="password" placeholder="Enter password..." required>
+              <input type="password" class="form-control" id="password" placeholder="Enter password..." name='password' required>
+            </div>
+            <div class="mb-4 small text-danger">
+              <small><?php  echo $errors['password'] ?></small>
             </div>
             
 
             <div class="mb-3 text-center ">
-              <button type="submit" class="btn btn-block btn-outline-dark">LOGIN</button>
+              <button type="submit" name="submit" class="btn btn-block btn-outline-dark">LOGIN</button>
             </div>
           </form>
           <div class="text-center">
             <small>Don't have an account yet?</small>
             <a class="small" href="register.php">Register</a>
           </div>
-
       </div>
     </div>
   </div>
 </div>
+
 
 <script src="valid.js"></script>
 </body>
