@@ -1,5 +1,6 @@
 <?php 
   include('conn.php');
+  session_start();
   $username = $password = ''; 
   $errors = array('username'=>'','password'=>'');
 
@@ -16,7 +17,9 @@
           if (isset($_POST['password'])){
             $password = $_POST['password'];
             if ($password === $resultPassword){
+              $_SESSION['username'] = $username;
               header('Location: menu.php');
+              exit();
             }
             else{
               $errors['password'] = 'wrong password'; 
@@ -38,8 +41,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
     body {
       background-image: url("img/bg1.jpg");

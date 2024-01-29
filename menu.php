@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,12 +28,12 @@
         <div class="row my-5 align-items-center justify-content-center">
             <div class="col-4">
                 <div class="card border-4">
-                    <a class="n_ul "href="">
+                    <a class="n_ul "href="add.php">
                         <div class="card-body text-center py-5 my-3">
                             <div>
                                 <img src="img/add-file.png" class="img-thumbnail mb-1" width="100" height="100" alt="">
                                 <h4 class="card-title">
-                                    ADD RECORD
+                                    ADD ITEMS
                                 </h4>
                             </div>
                                 
