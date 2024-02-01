@@ -98,8 +98,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
+     @font-face {
+    font-family: 'raleway';
+    src: url('font/Raleway-Regular.ttf') format('truetype');
+    }
     body {
-      background-image: url('img/bg1.jpg');
+      font-family: 'raleway', sans-serif;
+      background-image: url("img/4.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -107,11 +112,36 @@
       margin: 0;
     }
     .card {
-      backdrop-filter: blur(5px);
-      background-color: rgba(255, 255, 255, 0.3);
-      width: 500px;
+      width: 700px;
       margin: 0 auto; 
     }
+    .custom-input {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
+            border-bottom: 2px solid #000;
+            box-shadow: none !important;
+        }
+    .custom-input::placeholder {
+            color: #383c44; 
+            font-weight: bold;
+        }
+    .custom-input:focus {
+            border-color: #383c44; 
+            box-shadow: none; 
+        }
+    .form-control {
+      color: #383c44 !important;
+            font-weight: bold;
+        }
+    .btn{
+      border-radius: 20px;
+    }
+    span{
+        background-color: white !important;
+    }
+  </style>
   </style>
 </head>
 <body>
@@ -121,17 +151,15 @@
         <div class="justify-content-start">
             <div>
             <form class="needs-validation" novalidate action="register.php" method="POST">
-                <div class="row mb-2">
+                <div class="row mb-5">
                     <div class="col-6">
-                        <label for="fname" class="form-label">First Name</label>
-                        <input type="text" class="form-control" placeholder="First Name" id="fname" name='fname' value= "<?php echo $fname ?>" required>
+                        <input type="text" class="form-control custom-input" placeholder="First Name" id="fname" name='fname' value= "<?php echo $fname ?>" required>
                         <div class="small text-danger">
                             <small><?php  echo $errors['fname'] ?></small>
                         </div>
                     </div>
                     <div class="col-6">
-                        <label for="lname" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" id="lname" name='lname' value= "<?php echo $lname ?>" required>
+                        <input type="text" class="form-control custom-input" placeholder="Last Name" id="lname" name='lname' value= "<?php echo $lname ?>" required>
                         <div class="small text-danger">
                             <small><?php  echo $errors['lname'] ?></small>
                         </div>
@@ -139,41 +167,37 @@
                 </div>
 
                 <div>
-                    <label class="form-label">Email</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="anon123" id="user" name='user' value= "<?php echo $user ?>" required>
-                        <span class="input-group-text">@</span>
-                        <input type="text" class="form-control" placeholder="example.com" id="domain" name='domain' value= "<?php echo $domain ?>" required>
+                        <input type="text" class="form-control custom-input" placeholder="Email" id="user" name='user' value= "<?php echo $user ?>" required>
+                        <span class="input-group-text font-weight-bold border-0">@</span>
+                        <input type="text" class="form-control custom-input" id="domain" name='domain' value= "<?php echo $domain ?>" required>
                     </div>
-                    <div class="small mb-2 text-danger">
+                    <div class="small  mb-5 text-danger">
                             <small><?php  echo $errors['email'] ?></small>
                         </div>
 
                 </div>
                 <div>
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter username..." name='username' value= "<?php echo $username ?>" required>
+                    <input type="text" class="form-control custom-input" id="username" placeholder="Username" name='username' value= "<?php echo $username ?>" required>
                 </div>
-                <div class="mb-2 small text-danger">
+                <div class=" mb-5 small text-danger">
                                 <small><?php  echo $errors['username'] ?></small>
                             </div>
             
                 
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter password..." name='password' value= "<?php echo $password ?>" required>
-                <div class="mb-2 small text-danger">
+                <input type="password" class="form-control custom-input" id="password" placeholder="Password" name='password' value= "<?php echo $password ?>" required>
+                <div class=" mb-5 small text-danger">
                             <small><?php  echo $errors['password'] ?></small>
                         </div>
 
-                <label for="t-password" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="t-password" placeholder="Confirm password..." name='tpassword' value= "<?php echo $tpassword ?>"  required>
-                <div class="mb-3 small text-danger">
+                <input type="password" class="form-control custom-input" id="t-password" placeholder="Confirm Password" name='tpassword' value= "<?php echo $tpassword ?>"  required>
+                <div class=" mb-4 small text-danger">
                             <small><?php  echo $errors['tpassword'] ?></small>
                         </div>
                 
                 <div>
-                    <a href="login.php" class="btn btn-dark">Go Back</a>
-                    <button type="submit" name="submit" class="btn btn-outline-dark">REGISTER</button>
+                    <a href="login.php" class="btn btn-dark font-weight-bold">Go Back</a>
+                    <button type="submit" name="submit" class="btn btn-outline-dark font-weight-bold">Register</button>
                 </div>
             </form>
 

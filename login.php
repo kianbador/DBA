@@ -44,54 +44,84 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+    @font-face {
+    font-family: 'raleway';
+    src: url('font/Raleway-Regular.ttf') format('truetype');
+    }
     body {
-      background-image: url("img/bg1.jpg");
+      font-family: 'raleway', sans-serif;
+      background-image: url("img/4.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       height: 100vh; 
       margin: 0;
     }
-    .card {
-      backdrop-filter: blur(5px);
-      background-color: rgba(255, 255, 255, 0.3);
-      width: 400px;
-      margin: 0 auto; 
-    }
     .img-thumbnail{
       background-color: transparent;
       border: none;
     }
+    .btn{
+      border-radius: 20px;
+    }
+    .card {
+      width: 350px;
+      margin: 0 auto; 
+    }
+    .custom-input {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
+            border-bottom: 2px solid #000;
+            box-shadow: none !important;
+        }
+    .custom-input::placeholder {
+            color: #383c44; 
+            font-weight: bold;
+        }
+    .custom-input:focus {
+            border-color: #383c44; 
+            box-shadow: none; 
+        }
+    a{
+            color: #383c44; 
+            text-decoration: none; 
+
+    }
+    a:hover {
+        color: #383c44;
+        text-decoration: underline; 
+    }
+    .form-control {
+      color: #383c44 !important;
+            font-weight: bold;
+        }
   </style>
 </head>
 <body>
 <div class="container-fluid d-flex align-items-center justify-content-center vh-100">
-  <div class="card py-1 px-3">
+  <div class="card px-3">
     <div class="card-body">
     <div class="text-center">
-          <img src="img/logo-removebg-preview.png" alt="logo" class="img-thumbnail" width="100" height="100">
+          <img src="img/logov1.png" alt="logo" class="img-thumbnail" width="120" height="120">
         </div>
-      <h5 class="card-title text-center mb-4">INVENTORY MANAGEMENT SYSTEM</h5>
+        <div class="card-title text-center mb-4">
+          <p class="text-center font-weight-bold h4">Welcome!</p>
+          <small class="text-center text-muted display-6">Please enter your details</small>
+        </div>
       <div class="justify-content-start">
         <div>
           <form action="login.php" method="POST" class="needs-validation" novalidate>
-            <label for="username" class="form-label">Username:</label>
             <div class="input-group">
-              <span class="input-group-text">
-                <i class="bi bi-person-fill"></i>
-              </span>
-              <input type="text" class="form-control" id="username" placeholder="Enter username..." name='username' value= "<?php echo $username ?>" required>
+              <input type="text" class="form-control custom-input" id="username" placeholder="Username" name='username' value= "<?php echo $username ?>" required>
             </div>
             <div class="mb-4 small text-danger">
               <small><?php  echo $errors['username'] ?></small>
             </div>
-            
-            <label for="password" class="form-label">Password:</label>
+
             <div class="input-group">
-              <span class="input-group-text">
-                <i class="bi bi-lock"></i>
-              </span>
-              <input type="password" class="form-control" id="password" placeholder="Enter password..." name='password' required>
+              <input type="password" class="form-control custom-input" id="password" placeholder="Password" name='password' required>
             </div>
             <div class="mb-4 small text-danger">
               <small><?php  echo $errors['password'] ?></small>
@@ -99,12 +129,12 @@
             
 
             <div class="mb-3 text-center ">
-              <button type="submit" name="submit" class="btn btn-block btn-outline-dark">LOGIN</button>
+              <button type="submit" name="submit" class="btn btn-block font-weight-bold btn-dark">Log in</button>
             </div>
           </form>
           <div class="text-center">
             <small>Don't have an account yet?</small>
-            <a class="small" href="register.php">Register</a>
+            <a class="small font-weight-bold" href="register.php">Register</a>
           </div>
       </div>
     </div>

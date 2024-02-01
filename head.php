@@ -11,8 +11,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    @font-face {
+    font-family: 'raleway';
+    src: url('font/Raleway-Regular.ttf') format('truetype');
+    }
     body {
-      background-image: url("img/bg1.jpg");
+      font-family: 'raleway', sans-serif;
+      background-image: url("img/4.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -32,11 +37,11 @@
   </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-info navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active bg-info" href="menu.php"><img src="img/nav-logo.png" alt="Image" class="img-thumbnail" width="160" height="80"></a>
+        <a class="nav-link active" href="menu.php"><img src="img/logov1.png" alt="Image" class="img-thumbnail" width="80" height="80"><img src="img/logo.png" alt="Image" class="img-thumbnail" width="150" height="50"></a>
       </li>
     </ul>
 
@@ -44,8 +49,8 @@
 
   <div class="dropdown custom-dropdown">
     <label class="form-label"><?php echo $username; ?></label>
-    <button type="button" class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown">
-      <img src="img/person.png" alt="Image" class="img-thumbnail" width="50" height="50">
+    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">
+      <img src="img/person-fill.png" alt="Image" class="img-thumbnail" width="30" height="30">
     </button>
     <ul class="dropdown-menu text">
       <li><a class="dropdown-item" href="#">Link 1</a></li>

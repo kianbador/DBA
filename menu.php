@@ -13,11 +13,18 @@
             color: black !important;
         }
         .card{
+            border: none !important;
             transition: background-color 0.4s;
-            border-color: #aae5fc !important; 
         }
         .card:hover{
-            background-color: #aae5fc;
+            background-color: #212529;
+            color: white !important;
+        }
+        .n_ul:hover{
+            color: white !important;
+        }
+        .card:hover #invert-img{
+            filter: invert(100%);
         }
     </style>
 </head>
@@ -27,11 +34,11 @@
     <div class="container-lg pt-1 mt-4">
         <div class="row my-5 align-items-center justify-content-center">
             <div class="col-4">
-                <div class="card border-4">
+                <div class="card">
                     <a class="n_ul "href="add.php">
                         <div class="card-body text-center py-5 my-3">
                             <div>
-                                <img src="img/add-file.png" class="img-thumbnail mb-1" width="100" height="100" alt="">
+                                <img src="img/add1.png" class="img-thumbnail mb-1" width="100" height="100" alt="" id="invert-img">
                                 <h4 class="card-title">
                                     ADD ITEMS
                                 </h4>
@@ -44,13 +51,13 @@
             </div>
             
             <div class="col-4">
-                <div class="card border-4">
+                <div class="card">
                     <a class="n_ul "href="">
                         <div class="card-body text-center py-5 my-3">
                             <div>
-                                <img src="img/show.png" class="img-thumbnail mb-1" width="100" height="100" alt="">
+                                <img src="img/sold.png" id="invert-img" class="img-thumbnail mb-1" width="100" height="100" alt="">
                                 <h4 class="card-title">
-                                    SHOW RECORDS
+                                    SOLD ITEMS
                                 </h4>
                             </div>
                                 
@@ -61,11 +68,11 @@
             </div>
 
             <div class="col-4">
-                <div class="card border-4">
+                <div class="card">
                     <a class="n_ul "href="">
                         <div class="card-body text-center py-5 my-3">
                             <div>
-                                <img src="img/edit.png" class="img-thumbnail mb-1" width="100" height="100" alt="">
+                                <img src="img/edit1.png" id="invert-img" class="img-thumbnail mb-1" width="100" height="100" alt="">
                                 <h4 class="card-title">
                                     EDIT OR DELETE
                                 </h4>
