@@ -7,6 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroWorld IMS</title>
+    <link rel="icon" href="img/logov1.png" type="image/x-icon">
     <style>
         .n_ul{
             text-decoration: none !important;
@@ -52,7 +54,7 @@
             
             <div class="col-4">
                 <div class="card">
-                    <a class="n_ul "href="">
+                    <a class="n_ul "href="sold.php">
                         <div class="card-body text-center py-5 my-3">
                             <div>
                                 <img src="img/sold.png" id="invert-img" class="img-thumbnail mb-1" width="100" height="100" alt="">
@@ -69,7 +71,7 @@
 
             <div class="col-4">
                 <div class="card">
-                    <a class="n_ul "href="">
+                    <a class="n_ul "href="show.php">
                         <div class="card-body text-center py-5 my-3">
                             <div>
                                 <img src="img/edit1.png" id="invert-img" class="img-thumbnail mb-1" width="100" height="100" alt="">

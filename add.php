@@ -7,6 +7,15 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
 
 $set_id = $prod_id = $prod_name = $prod_brand = $prod_price = $prod_retail = $prod_qty = '';
 
+$query = "select supplier_id from supply_tbl";
+$result = mysqli_query($conn, $query);
+if($result){
+    $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+else{
+    echo "Error: " . mysqli_error($conn);
+}
+
 if (isset($_POST['submit'])) {
     if(isset($_POST['supplier_id'])){
         $supplier_id = $_POST['supplier_id'];
@@ -58,7 +67,7 @@ if (isset($_POST['submit'])) {
         if ($resultProdid) {
             $sql = "Update product_tbl set qty = qty + $qty where prod_id = '$id'";
             if (mysqli_query($conn, $sql)) {
-                $sql = "Insert into transaction_tbl (username, prod_id, total_payment) values ('$username','$id', '$total')";
+                $sql = "Insert into transaction_tbl (username, prod_id, total_payment, type) values ('$username','$id', '$total', 'added')";
                 if (mysqli_query($conn, $sql)) {
                 } else {
                     echo "Error updating record: " . mysqli_error($conn);
@@ -69,7 +78,7 @@ if (isset($_POST['submit'])) {
         }else{
             $sql = "Insert into product_tbl (prod_id, prod_name, prod_brand, price, retail_price, qty, supplier_id) values ('$id', '$name', '$brand', '$price', '$retail', $qty, '$supplier_id')";
             if (mysqli_query($conn, $sql)) {
-                $sql = "Insert into transaction_tbl (username, prod_id, total_payment) values ('$username','$id', '$total')";
+                $sql = "Insert into transaction_tbl (username, prod_id, total_payment, type) values ('$username','$id', '$total', 'added')";
                 if (mysqli_query($conn, $sql)) {
                 } else {
                     echo "Error updating record: " . mysqli_error($conn);
@@ -89,9 +98,28 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroWorld IMS</title>
+    <link rel="icon" href="img/logov1.png" type="image/x-icon">
     <style>
         .custom-input {
-            border-radius: 5px; 
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 0 !important;
+            border-bottom: 2px solid #000;
+            box-shadow: none !important;
+        }
+        .custom-input::placeholder {
+            color: #383c44; 
+            font-weight: bold;
+        }
+        .custom-input:focus {
+            border-color: #383c44; 
+            box-shadow: none; 
+        }
+        .form-control {
+            color: #383c44 !important;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -111,10 +139,6 @@ if (isset($_POST['submit'])) {
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
                     </select>
                 </div>
             </div>
@@ -123,15 +147,22 @@ if (isset($_POST['submit'])) {
     </div>
 
     <div class="container">
-        <form action="add.php" method="post">
+        <form action="add.php" method="post" class="needs-validation" novalidate>
             <div class="row">
                 <div class="col-12">
                     <div class="row">
                         <div class="col-2 mb-5">
-                            <label class="form-label mt-1">Supplier ID:</label>
+                            <label class="form-label mt-3">Supplier ID:</label>
                         </div>
                         <div class="col-2 ">
-                            <input type="text" name='supplier_id' class="form-control value='<?php $supplier_id ?>'">
+                            <select name="supplier_id" class="form-select" required>
+                                <option value="" disabled selected>Supplier ID</option>
+                                <?php 
+                                    foreach($data as $row){
+                                        echo '<option value="'.$row['supplier_id'].'">'.$row['supplier_id'].'</option>';
+                                    }
+                                ?>
+                            </select>
                         </div>
                     </div>
 
@@ -141,40 +172,37 @@ if (isset($_POST['submit'])) {
                     $selectedValue = isset($_POST['inputCount']) ? $_POST['inputCount'] : 0;
 
                     for ($i = 1; $i <= $selectedValue; $i++) {
-                        echo "<div class='col-3'>";
-                            echo '<h4> Product #'.$i.'</h4>';
+                        echo "<div class='col-3 bg-dark'>";
+                            echo '<h4 class="text-light mt-4"> Product #'.$i.'</h4>';
                             echo '<div>';
-                                echo '<label class="form-label mt-1">Product ID:</label>';
-                                echo '<input type="text" name="id[]" class="form-control" placeholder="">';
-                                echo '<label class="form-label mt-1">Product Name:</label>';
-                                echo '<input type="text" name="name[]" class="form-control" placeholder="">';
-                                echo '<label class="form-label mt-1">Product Brand:</label>';
-                                echo '<input type="text" name="brand[]" class="form-control" placeholder="">';
+                                echo '<input type="text" name="id[]" class="form-control custom-input" placeholder="Product ID" required>';
+                                echo '<input type="text" name="name[]" class="form-control custom-input mt-4" placeholder="Product Name" required>';
+                                echo '<input type="text" name="brand[]" class="form-control custom-input mt-4" placeholder="Product Brand" required>';
 
                                 echo '<div class="row mt-4">';
                                     echo '<div class="col-4">';
-                                        echo '<label class="form-label mt-1">Price:</label>';
+                                        echo '<label class="form-label mt-1 text-light">Price:</label>';
                                     echo '</div>';
                                     echo '<div class="col-8">';
-                                        echo '<input type="number" name="price[]" step="any" class="form-control" placeholder="Php">';
+                                        echo '<input type="number" name="price[]" step="any" class="form-control custom-input" placeholder="Php" required>';
                                     echo '</div>';
                                 echo '</div>';
 
                                 echo '<div class="row mt-4">';
                                     echo '<div class="col-4">';
-                                        echo '<label class="form-label mt-1">Retail:</label>';
+                                        echo '<label class="form-label mt-1 text-light">Retail:</label>';
                                     echo '</div>';
                                     echo '<div class="col-8">';
-                                        echo '<input type="number" name="r_price[]" step="any" class="form-control" placeholder="Php">';
+                                        echo '<input type="number" name="r_price[]" step="any" class="form-control custom-input" placeholder="Php" required>';
                                     echo '</div>';
                                 echo '</div>';
 
-                                echo '<div class="row mt-4">';
+                                echo '<div class="row my-4">';
                                     echo '<div class="col-4">';
-                                        echo '<label class="form-label mt-1">Quantity:</label>';
+                                        echo '<label class="form-label mt-1 text-light">Quantity:</label>';
                                     echo '</div>';
                                     echo '<div class="col-8">';
-                                        echo '<input type="number" name="qty[]" class="form-control" min="1" max="100">';
+                                        echo '<input type="number" name="qty[]" class="form-control custom-input" min="1" max="100" required>';
                                     echo '</div>';
                                 echo '</div>';
                             echo '</div>';
@@ -182,10 +210,14 @@ if (isset($_POST['submit'])) {
                     }
                 }
                 ?>
-                
+                <div class="col-12 text-start">
+                    <button type="submit" name='submit' class="my-4 btn btn-lg btn-dark font-weight-bold">Submit</button>
+                </div>
+
             </div>
-            <button type="submit" name='submit' class="my-4 btn btn-primary">SUBMIT</button>
         </form>
     </div>
+
+    <script src="valid.js"></script>
 </body>
 </html>

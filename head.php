@@ -5,9 +5,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>IMS</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ElectroWorld IMS</title>
+  <link rel="icon" href="img/logov1.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -34,6 +35,9 @@
       background-color: transparent;
       border: none;
     }
+    .username{
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -48,14 +52,14 @@
     <div class="mx-3">   
 
   <div class="dropdown custom-dropdown">
-    <label class="form-label"><?php echo $username; ?></label>
-    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">
+    <button type="button" class="btn btn-outline-dark dropdown-toggle text-light" data-bs-toggle="dropdown">
+      <?php echo $username; ?>
       <img src="img/person-fill.png" alt="Image" class="img-thumbnail" width="30" height="30">
     </button>
-    <ul class="dropdown-menu text">
-      <li><a class="dropdown-item" href="#">Link 1</a></li>
-      <li><a class="dropdown-item" href="#">Link 2</a></li>
-      <li><a class="dropdown-item" href="#">Link 3</a></li>
+    <ul class="dropdown-menu text-center">
+      <li><a class="dropdown-item btn btn-outline-dark" href="profile.php">Profile</a></li>
+      <li><a class="dropdown-item mt-2 btn btn-outline-dark" href="transactions.php">Transactions</a></li>
+      <li><a class="btn btn-outline-dark mt-2" href="login.php">Log out</a></li>
     </ul>
   </div>
 </div>
