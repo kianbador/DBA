@@ -45,8 +45,6 @@
                                     ADD ITEMS
                                 </h4>
                             </div>
-                                
-                                <p class="lead card-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
                     </a>
                 </div>
@@ -62,8 +60,7 @@
                                     SOLD ITEMS
                                 </h4>
                             </div>
-                                
-                                <p class="lead card-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
                         </div>
                     </a>
                 </div>
@@ -79,8 +76,6 @@
                                     EDIT OR DELETE
                                 </h4>
                             </div>
-                                
-                                <p class="lead card-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
                     </a>
                 </div>
