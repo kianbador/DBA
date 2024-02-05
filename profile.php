@@ -29,22 +29,31 @@
     <title>ElectroWorld IMS</title>
     <link rel="icon" href="img/logov1.png" type="image/x-icon">
 </head>
+<style>
+    .container {
+      width: 350px !important;
+    }
+</style>
 <body>
     <?php include 'head.php'; ?>
         
-    <div class="container bg-dark text-light p-3 mt-4">
-            <div class="mt-2">
+    <div class="container bg-dark text-light p-3 mt-5">
+            <div class="mt-3">
                 <h4>Name: <?php echo $name; ?></h4>
             </div>
-            <div class="mt-2">
+            <div class="mt-3">
                 <h4>Username: <?php echo $username; ?></h4>
             </div>
-            <div class="mt-2">
+            <div class="mt-3">
                 <h4>Email: <?php echo $three.'***@'.$domain; ?></h4>
             </div>
-            <div class="mt-2">
+            <div class="mt-3">
                 <h4>Pasword: <?php echo $asterisks; ?></h4>
             </div>
+            <div class="mt-5 text-center">
+                <a href="edit_profile.php" class="btn btn-light">Edit</a>
+            </div>
     </div>
+    
 </body>
 </html>

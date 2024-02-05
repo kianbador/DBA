@@ -60,6 +60,26 @@
     .container {
       width: 350px !important;
     }
+    .custom-input {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 0 !important;
+            border-bottom: 2px solid #000;
+            box-shadow: none !important;
+        }
+    .custom-input::placeholder {
+            color: #383c44; 
+            font-weight: bold;
+        }
+    .custom-input:focus {
+            border-color: #383c44; 
+            box-shadow: none; 
+        }
+    .form-control {
+            color: #383c44 !important;
+            font-weight: bold;
+        }
 </style>
 <body>
     <?php include('head.php'); ?>

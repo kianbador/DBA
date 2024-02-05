@@ -134,7 +134,7 @@
             box-shadow: none; 
         }
     .form-control {
-      color: #383c44 !important;
+            color: #383c44 !important;
             font-weight: bold;
         }
     .btn{
